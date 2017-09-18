@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "Degordian",
+      "authorEmail": "frontend@degordian.com",
+      "authorUrl": "https://www.degordian.com/"
+    }
+  }
+}

@@ -1,0 +1,5 @@
+node_modules/**
+bower_components/**
+src/js/vendor/**/*.js
+webpack.config.js
+dist/

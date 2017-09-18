@@ -1,0 +1,55 @@
+{
+  "name": "generator-degordian-phprontend",
+  "version": "0.0.0",
+  "description": "Frontend scaffolding for Yii or Wordpress projects.",
+  "homepage": "",
+  "author": {
+    "name": "Degordian",
+    "email": "frontend@degordian.com",
+    "url": "https://www.degordian.com/"
+  },
+  "files": [
+    "generators"
+  ],
+  "main": "generators/index.js",
+  "keywords": [
+    "frontend",
+    "php",
+    "yii",
+    "wordpress",
+    "yeoman-generator"
+  ],
+  "devDependencies": {
+    "yeoman-test": "^1.6.0",
+    "yeoman-assert": "^3.0.0",
+    "coveralls": "^2.13.1",
+    "nsp": "^2.6.3",
+    "eslint": "^4.1.0",
+    "eslint-config-xo-space": "^0.16.0",
+    "jest": "^19.0.2",
+    "jest-cli": "^20.0.0"
+  },
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "yeoman-generator": "^1.1.1",
+    "yosay": "^2.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "scripts": {
+    "prepublish": "nsp check",
+    "pretest": "eslint . --fix",
+    "test": "jest"
+  },
+  "eslintConfig": {
+    "extends": "xo-space",
+    "env": {
+      "jest": true,
+      "node": true
+    },
+    "rules": {}
+  },
+  "repository": "degordian/generator-degordian-phprontend",
+  "license": "MIT"
+}
