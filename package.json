@@ -1,6 +1,6 @@
 {
   "name": "generator-degordian-phprontend",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Frontend scaffolding for Yii or Wordpress projects.",
   "homepage": "",
   "author": {
