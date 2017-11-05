@@ -58,16 +58,5 @@ function getPageUrl($filePath) {
  */
 
 function bu($fileurl) {
-<% if (projectType === 'Wordpress') { -%>
-
-    if (strpos($_SERVER['SERVER_ADMIN'], '.loc') !== false) {
-        return "/" . PROJECT_NAME . "/wp-content/themes/" . PROJECT_NAME . "/" . $fileurl;
-    }
-    return "/wordpress/" . PROJECT_NAME . "/wp-content/themes/" . PROJECT_NAME . "/" . $fileurl;
-
-<% } else { -%>
-
     return "/".PROJECT_NAME."/". $fileurl;
-
-<% } -%>
 }

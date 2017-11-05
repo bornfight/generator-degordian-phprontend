@@ -71,7 +71,14 @@ Supplying a new name will create the folder for you.`);
       type: 'list',
       name: 'projectType',
       message: 'Is this project Yii or Wordpress based?',
-      choices: ['Yii', 'Wordpress']
+      choices: [{
+        name: 'Yii',
+        value: 'yii'
+      },
+      {
+        name: 'Wordpress',
+        value: 'wp'
+      }]
     },
     {
       type: 'checkbox',
@@ -117,7 +124,7 @@ Supplying a new name will create the folder for you.`);
 
   writing() {
     this.fs.copyTpl(
-      this.templatePath('slice'),
+      this.templatePath(`slice/${this.props.projectType}`),
       this.destinationPath('slice'),
       featuresConfig
     );
