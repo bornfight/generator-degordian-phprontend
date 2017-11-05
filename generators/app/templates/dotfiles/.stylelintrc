@@ -11,5 +11,6 @@
     "plugin/selector-bem-pattern": {
       "preset": "bem"
     }
-  }
+  },
+  "defaultSeverity": "warning"
 }
