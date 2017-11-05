@@ -25,6 +25,9 @@
     "no-undef": "warn"
   },
   "globals": {
-
+    "jquery": false,
+    "TweenMax": false,
+    "is": false,
+    "ScrollMagic": false
   }
 }

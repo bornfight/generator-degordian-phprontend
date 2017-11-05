@@ -1,15 +1,9 @@
 {
   "presets": [
     [
-      "env"
-    ]
-  ],
-  "plugins": [
-    "transform-proto-to-assign",
-    [
-      "transform-es2015-classes",
+      "env",
       {
-        "loose": true
+        "modules": false
       }
     ]
   ]

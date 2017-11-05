@@ -1,9 +1,5 @@
 @charset "utf-8";
 //#######################################
-//## MIXINS #############################
-//#######################################
-
-//#######################################
 //## VARIABLES ##########################
 //#######################################
 @import "helpers/variables/routes";
@@ -12,32 +8,55 @@
 @import "helpers/variables/breakpoints";
 @import "helpers/variables/z-index";
 @import "helpers/variables/grid-values";
-//#######################################
-//## PLACEHOLDERS #######################
-//#######################################
-@import "helpers/placeholders/placeholders";
+
 //#######################################
 //## FUNCTIONS ##########################
 //#######################################
 
 //#######################################
-//## FRAMEWORKS #########################
+//## MIXINS #############################
 //#######################################
+
+//#######################################
+//## SASS HELPER LIBRARIES ##############
+//#######################################
+
+// needs to imported after the overrides because of the !default flag
+@import "~@degordian/sassbox/src/helpers";
+@import "~@degordian/sassbox/src/layout";
+@import "~@degordian/sassbox/src/zkeleton";
+
+<% if (susy === true) { -%>
+@import "~susy/sass/susy";
+<% } -%>
+
+//#######################################
+//## PLACEHOLDERS #######################
+//#######################################
+@import "helpers/placeholders/placeholders";
 
 //#######################################
 //## BASE ###############################
 //#######################################
-
-//#######################################
-//## COMPONENTS #########################
-//#######################################
+<% if (normalize_css === true) { -%>
+@import "~normalize.css";
+<% } -%>
+@import "base/html";
+@import "base/reset";
+@import "base/selection";
 
 //#######################################
 //## PLUGINS ############################
 //#######################################
 
-// needs to imported after the overrides because of the !default flag
-@import "~@degordian/sassbox/src/sassbox";
+<% if (slick_slider === true) { -%>
+@import "~slick-carousel/slick/slick";
+<% } -%>
+
+//#######################################
+//## COMPONENTS #########################
+//#######################################
+
 //#######################################
 //## PAGES ##############################
 //#######################################

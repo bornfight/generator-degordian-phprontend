@@ -5,6 +5,51 @@ const yosay = require('yosay');
 const path = require('path');
 const mkdirp = require('mkdirp');
 
+const isFeatureSelected = (featureList, feature) => {
+  return featureList.indexOf(feature) !== -1;
+};
+
+const featuresConfig = {};
+const jsPlugins = [
+  {
+    name: 'jQuery',
+    value: 'jquery',
+    checked: true
+  },
+  {
+    name: 'TweenMax',
+    value: 'tweenmax'
+  },
+  {
+    name: 'svgxuse - icomoon',
+    value: 'svgxuse'
+  },
+  {
+    name: 'ScrollMagic',
+    value: 'scrollmagic'
+  },
+  {
+    name: 'Slick slider',
+    value: 'slick_slider'
+  },
+  {
+    name: 'is.js',
+    value: 'is_js'
+  }
+];
+
+const cssPlugins = [
+  {
+    name: 'normalize.css',
+    value: 'normalize_css',
+    checked: true
+  },
+  {
+    name: 'Susy',
+    value: 'susy'
+  }
+];
+
 module.exports = class extends Generator {
   prompting() {
     // Have Yeoman greet the user.
@@ -27,12 +72,39 @@ Supplying a new name will create the folder for you.`);
       name: 'projectType',
       message: 'Is this project Yii or Wordpress based?',
       choices: ['Yii', 'Wordpress']
+    },
+    {
+      type: 'checkbox',
+      name: 'jsPlugins',
+      message: 'What JavaScript plugins do you need?',
+      choices: jsPlugins
+    }, {
+      type: 'checkbox',
+      name: 'cssPlugins',
+      message: 'What CSS plugins do you need?',
+      choices: cssPlugins
     }];
 
     return this.prompt(prompts).then(props => {
       // To access props later use this.props.someAnswer;
       this.props = props;
     });
+  }
+
+  setPlugins() {
+    const selectedJsPlugins = this.props.jsPlugins;
+    const selectedCssPlugins = this.props.cssPlugins;
+
+    jsPlugins.forEach(plugin => {
+      featuresConfig[plugin.value] = isFeatureSelected(selectedJsPlugins, plugin.value);
+    });
+
+    cssPlugins.forEach(plugin => {
+      featuresConfig[plugin.value] = isFeatureSelected(selectedCssPlugins, plugin.value);
+    });
+
+    featuresConfig.name = this.props.name;
+    featuresConfig.projectType = this.props.projectType;
   }
 
   createFolderIfDoesNotExist() {
@@ -47,22 +119,17 @@ Supplying a new name will create the folder for you.`);
     this.fs.copyTpl(
       this.templatePath('slice'),
       this.destinationPath('slice'),
-      {
-        name: this.props.name,
-        projectType: this.props.projectType
-      }
+      featuresConfig
     );
 
     this.fs.copyTpl(
       this.templatePath('common/**'),
       this.destinationRoot(),
-      {
+      Object.assign({
         globOptions: {
           dot: true
-        },
-        name: this.props.name,
-        projectType: this.props.projectType
-      }
+        }
+      }, featuresConfig)
     );
 
     this.fs.copy(
@@ -75,14 +142,14 @@ Supplying a new name will create the folder for you.`);
       }
     );
 
-    this.fs.copy(
+    this.fs.copyTpl(
       this.templatePath('static/**'),
       this.destinationPath('static'),
-      {
+      Object.assign({
         globOptions: {
           dot: true
         }
-      }
+      }, featuresConfig)
     );
   }
 
@@ -93,7 +160,7 @@ Supplying a new name will create the folder for you.`);
 
     mkdirp.sync(path.join(this.destinationPath(), 'static/scss/base'));
     mkdirp.sync(path.join(this.destinationPath(), 'static/scss/components'));
-    mkdirp.sync(path.join(this.destinationPath(), 'static/scss/frameworks'));
+    mkdirp.sync(path.join(this.destinationPath(), 'static/scss/plugins'));
     mkdirp.sync(path.join(this.destinationPath(), 'static/scss/pages'));
     mkdirp.sync(path.join(this.destinationPath(), 'static/scss/helpers/functions'));
     mkdirp.sync(path.join(this.destinationPath(), 'static/scss/helpers/mixins'));
@@ -105,10 +172,5 @@ Supplying a new name will create the folder for you.`);
       npm: true,
       bower: false
     });
-  }
-
-  end() {
-    // TODO: start dev server automagically
-    // this.spawnCommand('npm run', ['dev']);
   }
 };

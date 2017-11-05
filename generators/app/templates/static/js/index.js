@@ -1,5 +1,9 @@
 import 'style/style.scss';
-import 'pages/HomePage';
+import HomePage from 'pages/HomePage';
 
-let hello = 'Hello world';
-console.log(hello);
+$(document).ready(() => {
+    const hello = 'Hello world';
+    console.log(hello);
+
+    const homePage = new HomePage();
+});

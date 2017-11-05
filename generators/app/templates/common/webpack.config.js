@@ -2,23 +2,30 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-const StyleLintPlugin = require('stylelint-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-const isProduction = (process.env.NODE_ENV === 'production');
-
-// TODO: configure bundle analyzer as a npm script
-//const bundleAnalyzer = isProduction === false ?
-//    new BundleAnalyzerPlugin({
-//        analyzerMode: 'static'
-//    }) : false;
+const isProduction = process.env.NODE_ENV === 'production';
+const analyzeBundle = process.env.ANALYZE === 'true';
 
 const plugins = [
     new ExtractTextPlugin('style.css'),
     new webpack.ProvidePlugin({
-        $     : 'jquery',
-        jQuery: 'jquery'
+        <%_ if (jquery === true || slick_slider === true) { -%>
+        $              : 'jquery',
+        jQuery         : 'jquery',
+        'window.jQuery': 'jquery',
+        <%_ } -%>
+        <%_ if (tweenmax === true || scrollmagic === true) { -%>
+        TweenMax: 'gsap/TweenMax.js',
+        <%_ } -%>
+        <%_ if (is_js === true) { -%>
+        is: 'is_js',
+        <%_ } -%>
+        <%_ if (scrollmagic === true) { -%>
+        ScrollMagic: 'ScrollMagic/scrollmagic/uncompressed/ScrollMagic.js'
+        <%_ } -%>
     }),
     new webpack.optimize.CommonsChunkPlugin({
         name     : 'vendor',
@@ -28,13 +35,10 @@ const plugins = [
     new webpack.DefinePlugin({
         'process.env.NODE_ENV': '"production"'
     }),
-    new StyleLintPlugin(),
     new BrowserSyncPlugin({
-        // TODO: ADD 'Browse to www.domain-name.loc:3000/project-name during dev'
         host : 'localhost',
         port : 3000,
-        // TODO: inject path in yeoman
-        proxy: 'http://www.front.loc/webpack-start-kit/',
+        proxy: 'http://www.<%= name %>.loc/',
         files: ['**/*.php', '**/*.html', './static/dist/*.js', './static/dist/*.css']
     }, {
         reload: false
@@ -42,16 +46,28 @@ const plugins = [
 ];
 
 if (isProduction) {
-    plugins.push(new UglifyJsPlugin({}));
+    plugins.push(
+        new UglifyJsPlugin({}),
+        new OptimizeCssAssetsPlugin({
+            cssProcessorOptions: {
+                safe: true
+            }
+        })
+    );
+}
+
+if (analyzeBundle) {
+    plugins.push(
+        new BundleAnalyzerPlugin({
+            analyzerMode: 'server'
+        })
+    )
 }
 
 module.exports = {
     entry  : {
         main  : './static/js/index.js',
-        vendor: [
-            // Add modules here to include them to vendor.js file
-            'jquery'
-        ]
+        vendor: './static/js/vendor.js'
     },
     output : {
         path      : path.join(__dirname, 'static/dist'),
@@ -103,13 +119,12 @@ module.exports = {
             })
         }]
     },
-    plugins: plugins
+    plugins: plugins,
+    externals: {
+    <%_ if (tweenmax === true || scrollmagic === true) { -%>
+        'TweenLite': 'TweenLite',
+        'TimelineMax': 'TimelineMax',
+        'TweenMax': 'TweenMax'
+    <%_ } -%>
+    }
 };
-
-
-// TODO: configure production build
-// TODO: separate vendor folder
-// DONE: add autoprefixer
-// DONE: check postcss parser
-// DONE: move zkeleton to sassbox
-// DONE: config jquery - import from node_modules and set to global scope

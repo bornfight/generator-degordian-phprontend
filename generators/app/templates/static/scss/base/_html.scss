@@ -1,0 +1,24 @@
+html, body {
+    width: 100%;
+    display: block;
+}
+
+html {
+    font-weight: normal;
+    font-family: $font-primary;
+    font-size: $browser-context+px;
+    color: $default-body-text-color;
+    line-height: line-height($browser-context, $browser-line-height);
+}
+
+a {
+    text-decoration: none;
+    color: $default-body-link-color;
+}
+
+.is-link {
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
