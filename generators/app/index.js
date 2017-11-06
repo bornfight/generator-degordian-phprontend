@@ -172,6 +172,8 @@ Supplying a new name will create the folder for you.`);
     mkdirp.sync(path.join(this.destinationPath(), 'static/scss/helpers/functions'));
     mkdirp.sync(path.join(this.destinationPath(), 'static/scss/helpers/mixins'));
     mkdirp.sync(path.join(this.destinationPath(), 'static/scss/helpers/plugins'));
+
+    mkdirp.sync(path.join(this.destinationPath(), 'static/js/vendor'));
   }
 
   install() {
