@@ -33,7 +33,7 @@ and follow the prompts as follows:
   * __JavaScript__
     * some libraries, such as jquery often require global scope as their plugins rely on presence of `jQuery` or `$` in `window` object
     * therefore, some plugins (e.g. `jQuery`) are added to global scope to prevent errors
-    * plugins like `TweenMax which are often used in a lot of modules are loaded everywhere to avoid tedious import in every user module
+    * plugins like `TweenMax` which are often used in a lot of modules are loaded everywhere to avoid tedious import in every user module
   * __CSS__
     * `style.scss` is modified based on selected css libraries
     * libraries installed as node packages are referenced with `~` which is an alias to node_modules, eg. `~/plugin-name`
@@ -102,7 +102,7 @@ new webpack.ProvidePlugin({
 })
 
 // exports of 'gsap/TweenMax.js' are loaded into every module
-// under the name TweenMax so you can use anywhere in your modules
+// under the name TweenMax so you can use TweenMax anywhere in your modules
 
 /* index.js */
 
