@@ -83,12 +83,12 @@ Supplying a new name will create the folder for you.`);
     {
       type: 'checkbox',
       name: 'jsPlugins',
-      message: 'What JavaScript plugins do you need?',
+      message: 'What JavaScript libraries do you need?',
       choices: jsPlugins
     }, {
       type: 'checkbox',
       name: 'cssPlugins',
-      message: 'What CSS plugins do you need?',
+      message: 'What CSS libraries do you need?',
       choices: cssPlugins
     }];
 
