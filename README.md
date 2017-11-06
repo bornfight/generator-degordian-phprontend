@@ -35,7 +35,7 @@ and follow the prompts as follows:
     * therefore, some plugins (e.g. `jQuery`) are added to global scope to prevent errors
     * plugins like `TweenMax which are often used in a lot of modules are loaded everywhere to avoid tedious import in every user module
   * __CSS__
-    * `style.scss is modified based on selected css libraries
+    * `style.scss` is modified based on selected css libraries
     * libraries installed as node packages are referenced with `~` which is an alias to node_modules, eg. `~/plugin-name`
     
 
@@ -59,7 +59,7 @@ That means that it runs the module's global code, but doesn't actually import an
 If you want to use the imported library in other modules you can reference it from the file where it is located, and webpack will still bundle the library in the `dist/vendor.js` file, as long as it is imported in `js/vendor.js`.
 
 __Example:__
-```
+```javascript
 /* vendor.js */
 
 // imported from node_modules
@@ -82,7 +82,7 @@ If you want to import the library to every module without having to always write
 Assigning a value to an identifier in the object passed to `ProvidePlugin` will automatically import that variable to all the other modules and fill it with exports of the loaded module.
 
 
-```
+```javascript
 /* webpack.config.js */
 
 new webpack.ProvidePlugin({
@@ -94,7 +94,7 @@ new webpack.ProvidePlugin({
 ```
 
 __Example:__
-```
+```javascript
 /* webpack.config.js */
 
 new webpack.ProvidePlugin({
@@ -120,7 +120,7 @@ If you need to expose variable globally(some jQuery plugins require this), you c
 
 __Example with global exposure:__
 
-```
+```javascript
 /* webpack.config.js */
 
 new webpack.ProvidePlugin({
@@ -136,7 +136,7 @@ new webpack.ProvidePlugin({
 Not all libraries are available through npm. 
 In that case you can vendor them inside the `static/js/vendor` folder.
 
-```
+```javascript
 my-project
 - slice
 - static
@@ -161,7 +161,7 @@ Some plugins such as gsap custom plugins require dependencies which don't resolv
 In such cases you may need to set those dependencies as externals so they don't break the build.
 
 __Example:__
-```
+```javascript
 /* webpack.config.js */
 
 module.exports = {
@@ -191,7 +191,7 @@ __You can read more about about ES6 modules [here](https://developer.mozilla.org
 You can reference s(css) libraries and partials directly from `node_modules`, webpack will resolve them automatically.
 
 __Example:__
-```
+```scss
 /* style.scss */
 
 @import "~susy/sass/susy";
