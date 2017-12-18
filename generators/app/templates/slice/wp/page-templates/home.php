@@ -45,8 +45,8 @@ get_partial('home/header', [
         <!-- //GET PARTIAL -->
 
         <div>
-            <p>Ja sam image pozvan sa bu()</p>
-            <img src="<?= bu('images/image.jpg'); ?>" alt="image">
+            <p>Ja sam image pozvan sa buStatic()</p>
+            <img src="<?= buStatic('images/image.jpg'); ?>" alt="image">
         </div>
 
     </div>

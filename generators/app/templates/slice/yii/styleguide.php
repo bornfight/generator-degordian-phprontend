@@ -170,8 +170,5 @@ render('layout/_head');
     <!-- //pagination -->
     <!-- //STYLEGUIDE -->
 </div>
-<?php
-render('layout/_scripts');
-?>
 </body>
 </html>

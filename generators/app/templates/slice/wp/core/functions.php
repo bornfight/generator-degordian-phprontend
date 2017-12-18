@@ -133,7 +133,7 @@ function get_home_url()
  * @return string
  * @throws Exception
  */
-function bu($url = '')
+function buStatic($url = '')
 {
     _defineInternalStaticPath();
     

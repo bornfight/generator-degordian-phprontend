@@ -35,8 +35,5 @@ render('layout/partials/_navigation', [ ]);
         ?>
     </div>
 </div>
-<?php
-render('layout/_scripts');
-?>
 </body>
 </html>

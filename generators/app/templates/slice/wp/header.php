@@ -9,7 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= ucfirst(PROJECT_NAME) ?></title>
     <!-- CSS -->
-    <link rel="stylesheet" href="<?= bu('static/dist/style.css') ?>">
+    <link rel="stylesheet" href="<?= buStatic('dist/style.css') ?>">
+    <script defer src="<?= buStatic('dist/vendor.js') ?>"></script>
+    <script defer src="<?= buStatic('dist/bundle.js') ?>"></script>
     <?php wp_head(); ?>
 </head>
 <body>

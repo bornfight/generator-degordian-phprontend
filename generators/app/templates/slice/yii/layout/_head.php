@@ -5,8 +5,8 @@
     <meta name="author" content="Degordian (http://www.degordian.com)">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- TYPEKIT -->
 
-    <!-- CSS DEV -->
     <link rel="stylesheet" href="<?=bu('static/dist/style.css')?>">
+    <script defer src="<?=bu('static/dist/vendor.js')?>"></script>
+    <script defer src="<?=bu('static/dist/bundle.js')?>"></script>
 </head>

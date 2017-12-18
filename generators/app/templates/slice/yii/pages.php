@@ -78,9 +78,6 @@ render('layout/_head');
 
     <!-- //STYLEGUIDE -->
 </div>
-<?php
-render('layout/_scripts');
-?>
 
 </body>
 </html>
