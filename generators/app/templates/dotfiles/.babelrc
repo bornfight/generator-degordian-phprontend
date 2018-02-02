@@ -3,7 +3,14 @@
     [
       "env",
       {
-        "modules": false
+        "modules": false,
+        "useBuiltIns": true,
+        "targets": {
+          "browsers": [
+            "> 0.5%",
+            "last 2 versions"
+          ]
+        }
       }
     ]
   ]
