@@ -16,31 +16,31 @@
   },
   "devDependencies": {
     "@degordian/sassbox": "^0.3.2",
-    "autoprefixer": "^7.2.3",
+    "autoprefixer": "^8.0.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
-    "browser-sync": "^2.18.13",
-    "browser-sync-webpack-plugin": "^1.2.0",
-    "css-loader": "^0.28.7",
-    "eslint": "^4.13.1",
+    "browser-sync": "^2.23.6",
+    "browser-sync-webpack-plugin": "^2.0.1",
+    "css-loader": "^0.28.9",
+    "eslint": "^4.18.0",
     "extract-text-webpack-plugin": "^3.0.2",
     <%_ if (tweenmax === true) { -%>
-    "gsap": "^1.20.3",
+    "gsap": "^1.20.4",
     <%_ } -%>
     <%_ if (is_js === true) { -%>
     "is_js": "^0.9.0",
     <%_ } -%>
     <%_ if (jquery === true || slick_slider === true) { -%>
-    "jquery": "^3.2.1",
+    "jquery": "^3.3.1",
     <%_ } -%>
     "node-sass": "^4.7.2",
     <%_ if (normalize_css === true) { -%>
-    "normalize.css": "^7.0.0",
+    "normalize.css": "^8.0.0",
     <%_ } -%>
     "optimize-css-assets-webpack-plugin": "^3.2.0",
-    "postcss-loader": "^2.0.9",
+    "postcss-loader": "^2.1.0",
     "sass-loader": "^6.0.6",
     <%_ if (scrollmagic === true) { -%>
     "scrollmagic": "^2.0.5",
@@ -48,19 +48,19 @@
     <%_ if (slick_slider === true) { -%>
     "slick-carousel": "^1.8.1",
     <%_ } -%>
-    "stylelint": "^8.4.0",
-    "stylelint-config-recommended": "^2.0.0",
-    "stylelint-scss": "^2.2.0",
+    "stylelint": "^9.0.0",
+    "stylelint-config-recommended": "^2.1.0",
+    "stylelint-scss": "^2.3.0",
     "stylelint-selector-bem-pattern": "^2.0.0",
     <%_ if (susy === true) { -%>
-    "susy": "^3.0.1",
+    "susy": "^3.0.3",
     <%_ } -%>
     <%_ if (svgxuse === true) { -%>
     "svgxuse": "^1.2.6",
     <%_ } -%>
-    "uglifyjs-webpack-plugin": "^1.1.4",
-    "webpack": "^3.10.0",
-    "webpack-bundle-analyzer": "^2.9.1"
+    "uglifyjs-webpack-plugin": "^1.2.0",
+    "webpack": "^3.11.0",
+    "webpack-bundle-analyzer": "^2.10.0"
   },
   "browserslist": [
     "> 0.5%",
