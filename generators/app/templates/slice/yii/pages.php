@@ -2,6 +2,18 @@
 
 define('PAGES_DIR', __DIR__ . '/pages/');
 
+function getExternalLink($url = null)
+{
+    if ($url === null) {
+        $url = htmlspecialchars($_SERVER['PHP_SELF']);
+    }
+
+
+    return 'http://' . getHostByName(getHostName()) . ':3000/' . ltrim($url, '/');
+}
+
+$externalUrl = getExternalLink();
+
 require_once __DIR__ . '/helpers/functions.php';
 
 ?><!DOCTYPE HTML>
@@ -75,6 +87,57 @@ render('layout/_head');
 
     </section>
     <!-- //pages -->
+    <section class="section styleguide__section section--qr">
+
+
+        <div class="section__heading">
+            <div class="container styleguide__container">
+                <h2 class="styleguide__heading heading__h2">
+                    BrowserSync access URLs
+                </h2>
+            </div>
+        </div>
+        <div class="container styleguide__container">
+            <p>
+                External:
+                <a href="<?= $externalUrl?>" target="_blank">
+                    <?= $externalUrl?>
+                </a>
+            </p>
+
+            <!-- LOAD QRCode.js -->
+            <script type="text/javascript" src="http://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+            <i id="qr-content" style="display: none;"><?= $externalUrl?></i>
+            <div class="styleguide__qr" id="qr" style="
+                display: inline-block;
+                background-color: #ffffff;
+                padding: 10px;
+                ">
+
+            </div>
+
+            <!-- CREATE QR -->
+            <script type="text/javascript">
+                let qrEl = document.getElementById('qr');
+                let qrContent = document.getElementById('qr-content').innerText;
+
+                console.log(qrEl);
+                console.log(qrContent);
+
+                let qrcode = new QRCode(qrEl, {
+                    text: qrContent,
+                    width: 128,
+                    height: 128,
+                    colorDark : "#000000",
+                    colorLight : "#ffffff",
+                    correctLevel : QRCode.CorrectLevel.H
+                });
+            </script>
+        </div>
+
+        <i class="styleguide__separator"></i>
+
+    </section>
 
     <!-- //STYLEGUIDE -->
 </div>
