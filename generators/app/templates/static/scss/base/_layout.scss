@@ -1,0 +1,14 @@
+.clearfix {
+
+    display: block;
+
+    &:after {
+        height: 0;
+        clear: both;
+        font-size: 0;
+        content: "\A";
+        display: block;
+        visibility: hidden;
+    }
+
+}

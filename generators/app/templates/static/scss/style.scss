@@ -23,7 +23,6 @@
 
 // needs to imported after the overrides because of the !default flag
 @import "~@degordian/sassbox/src/helpers";
-@import "~@degordian/sassbox/src/layout";
 @import "~@degordian/sassbox/src/zkeleton";
 
 <% if (susy === true) { -%>
@@ -44,6 +43,7 @@
 @import "base/html";
 @import "base/reset";
 @import "base/selection";
+@import "base/layout";
 
 //#######################################
 //## PLUGINS ############################
