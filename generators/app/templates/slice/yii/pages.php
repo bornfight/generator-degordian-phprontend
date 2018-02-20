@@ -106,7 +106,7 @@ render('layout/_head');
             </p>
 
             <!-- LOAD QRCode.js -->
-            <script type="text/javascript" src="http://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+            <script type="text/javascript" src="../node_modules/qrcodejs/qrcode.js"></script>
             <i id="qr-content" style="display: none;"><?= $externalUrl?></i>
             <div class="styleguide__qr" id="qr" style="
                 display: inline-block;
