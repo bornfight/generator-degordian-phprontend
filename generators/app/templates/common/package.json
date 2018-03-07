@@ -15,7 +15,7 @@
     "url": ""
   },
   "devDependencies": {
-    "@degordian/sassbox": "^0.3.2",
+    "@degordian/sassbox": "^0.4.0",
     "autoprefixer": "^8.0.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
